@@ -1,4 +1,4 @@
-package com.mlechko.weatherapp.ui.theme
+package com.mlechko.weatherapp.presentation.theme.ui
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

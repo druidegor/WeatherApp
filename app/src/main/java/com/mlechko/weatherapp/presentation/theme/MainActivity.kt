@@ -1,4 +1,4 @@
-package com.mlechko.weatherapp
+package com.mlechko.weatherapp.presentation.theme
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -11,7 +11,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.mlechko.weatherapp.ui.theme.WeatherAppTheme
+import com.mlechko.weatherapp.presentation.MainWeatherScreen
+import com.mlechko.weatherapp.presentation.theme.ui.WeatherAppTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,10 +21,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             WeatherAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    MainWeatherScreen(Modifier.padding(innerPadding))
                 }
             }
         }
