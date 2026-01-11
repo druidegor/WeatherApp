@@ -13,13 +13,17 @@ import androidx.compose.ui.zIndex
 
 @Preview
 @Composable
-fun WeatherCardWithDate() {
+fun WeatherCardWithDate(
+    date: String,
+
+) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         DateCard(
             modifier = Modifier
-                .zIndex(1f)
+                .zIndex(1f),
+            date = date
         )
 
         MainWeatherCard(

@@ -16,6 +16,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -26,18 +28,49 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.mlechko.weatherapp.R
+import com.mlechko.weatherapp.domain.City
 import com.mlechko.weatherapp.presentation.components.ForeCastSection
 import com.mlechko.weatherapp.presentation.components.Header
 import com.mlechko.weatherapp.presentation.components.InfoCard
 import com.mlechko.weatherapp.presentation.components.InfoItem
 import com.mlechko.weatherapp.presentation.components.WeatherCardWithDate
 
-@Preview
 @Composable
 fun MainWeatherScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    city: City,
+    viewModel: MainWeatherViewModel = viewModel {
+        MainWeatherViewModel(city)
+    }
 ) {
+
+    val state by viewModel.state.collectAsState()
+
+    when(state) {
+        is WeatherScreenState.Loading -> {
+
+        }
+        is WeatherScreenState.Content -> {
+
+        }
+        is WeatherScreenState.Error -> {
+
+        }
+    }
+
+
+
+
+}
+
+@Composable
+fun WeatherScreen(
+    modifier: Modifier = Modifier,
+    state: WeatherScreenState.Content
+) {
+
     Column(
         modifier = modifier
             .background(MaterialTheme.colorScheme.background),
@@ -45,7 +78,7 @@ fun MainWeatherScreen(
     ) {
 
         Header(
-            city = "Minsk",
+            city = state.city.name,
             time = "18.42 PM"
         )
 
@@ -69,10 +102,7 @@ fun MainWeatherScreen(
                     .padding(top = 98.dp)
                     .zIndex(0f)
             )
-
-
         }
-
     }
 }
 
