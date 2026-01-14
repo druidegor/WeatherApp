@@ -24,12 +24,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mlechko.weatherapp.R
+import com.mlechko.weatherapp.presentation.model.HourlyWeatherUI
 import com.mlechko.weatherapp.presentation.theme.ui.Grey
 
 @Preview
 @Composable
 fun ForeCastSection(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    hourlyWeather: List<HourlyWeatherUI>
 ) {
     Column(
         modifier = modifier
@@ -65,24 +67,13 @@ fun ForeCastSection(
                 .padding(horizontal = 16.dp),
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            ForeCastItem(
-                modifier = Modifier.weight(1f),
-                image = painterResource(id = R.drawable.cloud_storm),
-                time = "6.00 AM",
-                degree = "24"
-            )
-            ForeCastItem(
-                modifier = Modifier.weight(1f),
-                image = painterResource(id = R.drawable.cloud_storm),
-                time = "6.00 AM",
-                degree = "24"
-            )
-            ForeCastItem(
-                modifier = Modifier.weight(1f),
-                image = painterResource(id = R.drawable.cloud_storm),
-                time = "6.00 AM",
-                degree = "24"
-            )
+            hourlyWeather.forEach {
+                ForeCastItem(
+                    modifier = Modifier.weight(1f),
+                    image = painterResource(id = R.drawable.cloud_storm),
+                    info = it
+                )
+            }
         }
     }
 }

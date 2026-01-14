@@ -14,12 +14,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.mlechko.weatherapp.R
+import com.mlechko.weatherapp.presentation.model.InfoCardUI
 
 
 @Preview
 @Composable
 fun InfoCard(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    info: InfoCardUI
 ) {
     Row(
         modifier = modifier
@@ -35,25 +37,25 @@ fun InfoCard(
         InfoItem(
             modifier = Modifier.weight(1f),
             image = painterResource(id = R.drawable.ic_carbon_humidity),
-            title = "75%",
+            title = info.humidity,
             content = "Humidity"
         )
         InfoItem(
             modifier = Modifier.weight(1f),
             image = painterResource(id = R.drawable.ic_tabler_wind),
-            title = "8 km/h",
+            title = info.windSpeed,
             content = "Wind"
         )
         InfoItem(
             modifier = Modifier.weight(1f),
             image = painterResource(id = R.drawable.ic_speedometer),
-            title = "1011",
+            title = info.pressure,
             content = "Air pressure"
         )
         InfoItem(
             modifier = Modifier.weight(1f),
             image = painterResource(id = R.drawable.ic_round_visibility_),
-            title = "6 km",
+            title = info.visibility,
             content = "Visibility"
         )
     }

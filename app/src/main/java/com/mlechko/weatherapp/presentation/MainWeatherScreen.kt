@@ -78,29 +78,34 @@ fun WeatherScreen(
     ) {
 
         Header(
-            city = state.city.name,
-            time = "18.42 PM"
+            city = state.uiState.cityName,
+            time = state.uiState.currentTime
         )
 
         Spacer(Modifier.height(24.dp))
 
-        WeatherCardWithDate()
+        WeatherCardWithDate(
+            date = state.uiState.currentDate,
+            temperature = state.uiState.temperature,
+            content = state.uiState.weatherType.name
+        )
 
         Spacer(Modifier.height(16.dp))
-
 
         Box {
 
             InfoCard(
                 modifier = Modifier
                     .padding(horizontal = 32.dp)
-                    .zIndex(1f)
+                    .zIndex(1f),
+                info = state.uiState.infoCardUI
             )
 
             ForeCastSection(
                 modifier = Modifier
                     .padding(top = 98.dp)
-                    .zIndex(0f)
+                    .zIndex(0f),
+                hourlyWeather = state.uiState.hourlyWeatherUI
             )
         }
     }

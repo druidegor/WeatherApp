@@ -7,6 +7,7 @@ import com.mlechko.weatherapp.domain.HourlyWeather
 
 data class Weather(
     val city: City,
+    val timezoneOffsetSeconds: Int,
     val currentWeather: CurrentWeather,
     val dailyWeather: List<DailyWeather>,
     val hourlyWeather: List<HourlyWeather>

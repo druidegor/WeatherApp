@@ -23,15 +23,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
 import com.mlechko.weatherapp.R
-
+import com.mlechko.weatherapp.presentation.model.HourlyWeatherUI
 
 
 @Composable
 fun ForeCastItem(
     modifier: Modifier = Modifier,
     image: Painter,
-    time: String,
-    degree: String
+    info: HourlyWeatherUI
 ) {
     Column(
         modifier = modifier
@@ -44,7 +43,7 @@ fun ForeCastItem(
         verticalArrangement = Arrangement.spacedBy(4.dp)
     ) {
         Text(
-            text = time,
+            text = info.time,
             fontSize = 12.sp,
             fontWeight = FontWeight.SemiBold,
             color = MaterialTheme.colorScheme.secondary
@@ -58,7 +57,7 @@ fun ForeCastItem(
                 .zIndex(0f)
         )
         Text(
-            text = degree,
+            text = info.temperature,
             fontSize = 18.sp,
             fontWeight = FontWeight.Black,
             color = MaterialTheme.colorScheme.secondary

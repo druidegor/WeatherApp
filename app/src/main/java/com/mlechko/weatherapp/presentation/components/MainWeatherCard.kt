@@ -30,7 +30,7 @@ import com.mlechko.weatherapp.presentation.theme.ui.ForecastTop
 @Composable
 fun MainWeatherCard(
     modifier: Modifier = Modifier,
-    degree: String = "23°",
+    temperature: String = "23°",
     content: String = "Moon Cloud Fast Wind"
 ) {
     Column(
@@ -49,7 +49,7 @@ fun MainWeatherCard(
         )
         Spacer(Modifier.height(8.dp))
         Text(
-            text = degree,
+            text = temperature,
             fontWeight = FontWeight.Bold,
             fontSize = 72.sp,
             color = MaterialTheme.colorScheme.onPrimary

@@ -18,7 +18,7 @@ import com.mlechko.weatherapp.presentation.theme.ui.White
 @Composable
 fun DateCard(
     modifier: Modifier,
-    date: String = "Sunday, 8 March 2021"
+    date: String
 ) {
     Box(
         modifier = modifier
