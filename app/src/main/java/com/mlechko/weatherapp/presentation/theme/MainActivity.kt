@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.mlechko.weatherapp.domain.City
 import com.mlechko.weatherapp.presentation.MainWeatherScreen
 import com.mlechko.weatherapp.presentation.theme.ui.WeatherAppTheme
 
@@ -21,25 +22,16 @@ class MainActivity : ComponentActivity() {
         setContent {
             WeatherAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    MainWeatherScreen(Modifier.padding(innerPadding))
+                    MainWeatherScreen(
+                        Modifier.padding(innerPadding),
+                        city = City(
+                            lat = 53.9,
+                            lon = 27.56,
+                            name = "Minsk"
+                        )
+                    )
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    WeatherAppTheme {
-        Greeting("Android")
     }
 }

@@ -48,12 +48,15 @@ fun MainWeatherScreen(
 
     val state by viewModel.state.collectAsState()
 
-    when(state) {
+    when(val content = state) {
         is WeatherScreenState.Loading -> {
 
         }
         is WeatherScreenState.Content -> {
-
+            WeatherScreen(
+                modifier = modifier,
+                state = content
+                )
         }
         is WeatherScreenState.Error -> {
 

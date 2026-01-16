@@ -16,6 +16,12 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField(
+            "String",
+            "WEATHER_API_KEY",
+            "\"${properties["WEATHER_API_KEY"]}\""
+        )
     }
 
     buildTypes {
@@ -36,12 +42,16 @@ android {
         jvmTarget = "11"
     }
     buildFeatures {
+        buildConfig = true
         compose = true
     }
 }
 
 dependencies {
 
+    implementation(libs.retrofit.v300)
+    implementation(libs.converter.kotlinx.serialization)
+    implementation(libs.converter.gson.v300)
     coreLibraryDesugaring (libs.desugar.jdk.libs)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.core.ktx)
