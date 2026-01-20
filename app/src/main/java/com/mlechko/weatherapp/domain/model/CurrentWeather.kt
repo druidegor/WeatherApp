@@ -3,6 +3,8 @@ package com.mlechko.weatherapp.domain
 import com.mlechko.weatherapp.domain.model.WeatherType
 
 data class CurrentWeather(
+    val description: String,
+    val iconCode: String,
     val timestampSeconds: Long,
     val temperature: Double,
     val type: WeatherType,

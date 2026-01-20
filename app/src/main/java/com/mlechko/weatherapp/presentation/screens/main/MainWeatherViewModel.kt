@@ -1,11 +1,10 @@
-package com.mlechko.weatherapp.presentation
+package com.mlechko.weatherapp.presentation.screens.main
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mlechko.weatherapp.data.TestWeatherRepository
 import com.mlechko.weatherapp.domain.City
-import com.mlechko.weatherapp.domain.CurrentWeather
-import com.mlechko.weatherapp.domain.HourlyWeather
 import com.mlechko.weatherapp.presentation.model.WeatherUIState
 import com.mlechko.weatherapp.presentation.model.toWeatherUIState
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -21,9 +20,10 @@ class MainWeatherViewModel(city: City): ViewModel() {
     val state = _state.asStateFlow()
 
     init {
-
         viewModelScope.launch {
+
             try {
+                Log.d("VM", "Loading weather...")
                 val weather = repository.getWeather(city).toWeatherUIState()
                 _state.value = WeatherScreenState.Content(
                     uiState = weather

@@ -1,4 +1,4 @@
-package com.mlechko.weatherapp.presentation.components
+package com.mlechko.weatherapp.presentation.components.main
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement

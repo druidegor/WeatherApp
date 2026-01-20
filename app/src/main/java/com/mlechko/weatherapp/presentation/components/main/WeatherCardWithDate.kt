@@ -1,23 +1,20 @@
-package com.mlechko.weatherapp.presentation.components
+package com.mlechko.weatherapp.presentation.components.main
 
-import android.health.connect.datatypes.units.Temperature
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.offset
-import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
+import com.mlechko.weatherapp.presentation.model.IconUI
 
-@Preview
 @Composable
 fun WeatherCardWithDate(
+    icon: IconUI,
     date: String,
     temperature: String,
-    content: String
+    description: String
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
@@ -29,10 +26,11 @@ fun WeatherCardWithDate(
         )
 
         MainWeatherCard(
-            Modifier
-            .offset(y = (-8).dp),
+            modifier = Modifier.
+                offset(y = (-16).dp),
+            icon = icon,
             temperature = temperature,
-            content = content
+            description = description
         )
 
     }

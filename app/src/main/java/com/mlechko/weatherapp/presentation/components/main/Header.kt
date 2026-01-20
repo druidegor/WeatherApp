@@ -1,4 +1,4 @@
-package com.mlechko.weatherapp.presentation.components
+package com.mlechko.weatherapp.presentation.components.main
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -29,7 +29,7 @@ fun Header(
         )
         Text(
             text = time,
-            fontSize = 12.sp,
+            fontSize = 14.sp,
             fontWeight = FontWeight.SemiBold,
             color = MaterialTheme.colorScheme.onBackground
         )

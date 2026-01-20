@@ -1,4 +1,4 @@
-package com.mlechko.weatherapp.presentation.components
+package com.mlechko.weatherapp.presentation.components.main
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
@@ -10,7 +10,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
-import com.mlechko.weatherapp.presentation.theme.ui.WhiteTextOnSecondaryCard
 
 @Composable
 fun InfoItem(
@@ -29,7 +28,7 @@ fun InfoItem(
         )
         Text(
             text = title,
-            fontSize = 12.sp,
+            fontSize = 11.sp,
             fontWeight = FontWeight.Black
         )
         Text(

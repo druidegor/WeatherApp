@@ -49,9 +49,12 @@ android {
 
 dependencies {
 
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.coil.compose)
     implementation(libs.retrofit.v300)
     implementation(libs.converter.kotlinx.serialization)
     implementation(libs.converter.gson.v300)
+    implementation(libs.ui.graphics)
     coreLibraryDesugaring (libs.desugar.jdk.libs)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.core.ktx)
