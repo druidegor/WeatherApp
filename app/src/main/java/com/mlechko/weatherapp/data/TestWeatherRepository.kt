@@ -17,7 +17,6 @@ object TestWeatherRepository: WeatherRepository {
         cachedWeather?.let {
             return it
         }
-
         val response =  api.getWeather(
             lat = city.lat,
             lon = city.lon,

@@ -1,7 +1,6 @@
 package com.mlechko.weatherapp.navigation
 
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Scaffold
+import android.os.Bundle
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 
@@ -11,6 +10,7 @@ import androidx.navigation.compose.rememberNavController
 import com.mlechko.weatherapp.domain.City
 import com.mlechko.weatherapp.presentation.screens.daily.DailyWeatherScreen
 import com.mlechko.weatherapp.presentation.screens.main.MainWeatherScreen
+import com.mlechko.weatherapp.presentation.screens.start.StartScreen
 
 @Composable
 fun NavGraph(
@@ -21,12 +21,23 @@ fun NavGraph(
 
     NavHost(
         navController = navController,
-        startDestination = Screen.Main.route,
+        startDestination = Screen.Start.route,
         modifier = modifier
     ) {
+        composable(Screen.Start.route) {
+            StartScreen(
+
+                onGoToMain = {
+                    navController.navigate(Screen.Main.route)
+                },
+                onGoToPicker = {
+                    navController.navigate(Screen.Main.route)
+                }
+            )
+        }
+
         composable(Screen.Main.route) {
             MainWeatherScreen(
-                city = City(0.0,0.0),
                 onClick = {
                     navController.navigate(Screen.Daily.route)
                 }
@@ -34,7 +45,6 @@ fun NavGraph(
         }
         composable(Screen.Daily.route) {
             DailyWeatherScreen(
-                city = City(0.0,0.0),
                 onClick = {
                     navController.popBackStack()
                 }
@@ -44,6 +54,8 @@ fun NavGraph(
 }
 
 sealed class Screen(val route: String) {
+
+    data object Start: Screen("start")
 
     data object Main: Screen("main")
 

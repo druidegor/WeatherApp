@@ -1,7 +1,9 @@
 package com.mlechko.weatherapp.presentation.screens.daily
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.mlechko.weatherapp.data.CityRepositoryImpl
 import com.mlechko.weatherapp.data.TestWeatherRepository
 import com.mlechko.weatherapp.domain.City
 import com.mlechko.weatherapp.presentation.model.WeatherUIState
@@ -11,8 +13,11 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class DailyViewModel(city: City): ViewModel() {
+class DailyViewModel(
+    context: Context
+): ViewModel() {
 
+    val cityRepository = CityRepositoryImpl.getInstance(context)
     val repository = TestWeatherRepository
 
     val _state = MutableStateFlow<DailyScreenState>(DailyScreenState.Loading)
@@ -23,8 +28,12 @@ class DailyViewModel(city: City): ViewModel() {
         viewModelScope.launch {
 
             try {
-                val weather = repository.getWeather(city).toWeatherUIState()
-                _state.value = DailyScreenState.Content(weather)
+                val city = cityRepository.getSavedCity()
+                if (city != null) {
+                    val weather = repository.getWeather(city).toWeatherUIState()
+                    _state.value = DailyScreenState.Content(weather)
+                }
+               else _state.value = DailyScreenState.Error
             }
             catch(e: Exception) {
                 _state.value = DailyScreenState.Error

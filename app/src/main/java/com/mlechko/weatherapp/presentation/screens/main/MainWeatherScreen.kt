@@ -1,5 +1,6 @@
 package com.mlechko.weatherapp.presentation.screens.main
 
+import android.content.Context
 import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -14,6 +15,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -26,9 +28,9 @@ import com.mlechko.weatherapp.presentation.components.main.WeatherCardWithDate
 @Composable
 fun MainWeatherScreen(
     modifier: Modifier = Modifier,
-    city: City,
+    context: Context = LocalContext.current.applicationContext,
     viewModel: MainWeatherViewModel = viewModel {
-        MainWeatherViewModel(city)
+        MainWeatherViewModel(context)
     },
     onClick: () -> Unit
 ) {

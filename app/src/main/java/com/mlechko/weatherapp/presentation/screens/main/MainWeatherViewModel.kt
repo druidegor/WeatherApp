@@ -1,8 +1,10 @@
 package com.mlechko.weatherapp.presentation.screens.main
 
+import android.content.Context
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.mlechko.weatherapp.data.CityRepositoryImpl
 import com.mlechko.weatherapp.data.TestWeatherRepository
 import com.mlechko.weatherapp.domain.City
 import com.mlechko.weatherapp.presentation.model.WeatherUIState
@@ -11,8 +13,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class MainWeatherViewModel(city: City): ViewModel() {
+class MainWeatherViewModel(context: Context): ViewModel() {
 
+    private val cityRepository = CityRepositoryImpl.getInstance(context)
     private val repository = TestWeatherRepository
 
     private val _state = MutableStateFlow<WeatherScreenState>(WeatherScreenState.Loading)
@@ -23,11 +26,13 @@ class MainWeatherViewModel(city: City): ViewModel() {
         viewModelScope.launch {
 
             try {
-                Log.d("VM", "Loading weather...")
-                val weather = repository.getWeather(city).toWeatherUIState()
-                _state.value = WeatherScreenState.Content(
-                    uiState = weather
-                )
+                val city = cityRepository.getSavedCity()
+                if (city != null) {
+                    val weather = repository.getWeather(city).toWeatherUIState()
+                    _state.value = WeatherScreenState.Content(
+                        uiState = weather
+                    )
+                } else _state.value = WeatherScreenState.Error
             } catch (e: Exception) {
                 _state.value = WeatherScreenState.Error
             }

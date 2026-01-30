@@ -1,5 +1,6 @@
 package com.mlechko.weatherapp.presentation.screens.daily
 
+import android.content.Context
 import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -13,6 +14,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.mlechko.weatherapp.domain.City
@@ -28,9 +30,9 @@ import com.mlechko.weatherapp.presentation.theme.ui.PurpleGradient
 @Composable
 fun DailyWeatherScreen(
     modifier: Modifier = Modifier,
-    city: City,
+    context: Context = LocalContext.current.applicationContext,
     viewModel: DailyViewModel = viewModel {
-        DailyViewModel(city)
+        DailyViewModel(context)
     },
     onClick: () -> Unit
 ) {
@@ -59,24 +61,15 @@ fun DailyScreen(
     state: DailyScreenState.Content,
     onClick: () -> Unit
 ) {
-    Box(
-        modifier = modifier
-    ) {
-
-
-        DailyBackground(
-            modifier = modifier.matchParentSize()
-        )
-
 
         Box(
-            modifier = Modifier.fillMaxSize()
+            modifier = modifier.fillMaxSize()
         ) {
 
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(vertical = 48.dp, horizontal = 32.dp),
+                    .padding(bottom = 24.dp, start = 24.dp, end = 24.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
 
@@ -100,6 +93,4 @@ fun DailyScreen(
                 )
             }
         }
-    }
-
 }
