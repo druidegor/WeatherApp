@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -23,11 +24,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mlechko.weatherapp.R
 import com.mlechko.weatherapp.presentation.theme.ui.DailyBackgroundCard
-import com.mlechko.weatherapp.presentation.theme.ui.PurpleGradient
 import com.mlechko.weatherapp.presentation.theme.ui.WeatherBackgroundItem
 import com.mlechko.weatherapp.presentation.theme.ui.White
 
-@Preview
+
 @Composable
 fun CurrentWeatherCard(
     modifier: Modifier = Modifier,
@@ -37,14 +37,13 @@ fun CurrentWeatherCard(
 )
 {
 
-    Box(
-        modifier = modifier
-            .fillMaxWidth()
-            .clip(RoundedCornerShape(40.dp))
-            .border(width = 2.dp, color = White,RoundedCornerShape(40.dp))
-    ) {
-        DailyBackgroundCard(modifier = Modifier.matchParentSize())
-        Column (
+
+    Column (
+            modifier = modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(40.dp))
+                .border(width = 1.dp, color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.1f),RoundedCornerShape(40.dp))
+                .background(MaterialTheme.colorScheme.onSecondary.copy(0.9f))
         ){
             Row(
                 modifier
@@ -65,18 +64,15 @@ fun CurrentWeatherCard(
                         text = temperature,
                         fontWeight = FontWeight.Bold,
                         fontSize = 72.sp,
-                        color = White
+                        color = MaterialTheme.colorScheme.onTertiary
                     )
                     Text(
                         text = description.uppercase(),
                         fontWeight = FontWeight.Black,
                         fontSize = 13.sp,
-                        color = White
+                        color = MaterialTheme.colorScheme.onTertiary
                     )
                 }
             }
         }
     }
-
-
-}

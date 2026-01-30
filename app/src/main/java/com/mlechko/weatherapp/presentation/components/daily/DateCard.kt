@@ -28,13 +28,15 @@ fun DateCard(
     onClick: () -> Unit
 ) {
     Row(
-        modifier = modifier.fillMaxWidth(),
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(top = 16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Icon(
             imageVector = Icons.AutoMirrored.Filled.KeyboardArrowLeft,
             contentDescription = "Arrow Left, back to main screen",
-            tint = White,
+            tint = MaterialTheme.colorScheme.onPrimary,
             modifier = Modifier.clickable {
                 onClick()
             }
@@ -49,13 +51,13 @@ fun DateCard(
                 text = "Today's Weather",
                 fontWeight = FontWeight.ExtraBold,
                 fontSize = 24.sp,
-                color = White
+                color = MaterialTheme.colorScheme.onTertiary
             )
             Text(
                 text = date,
                 fontWeight = FontWeight.Bold,
                 fontSize = 11.sp,
-                color = White
+                color = MaterialTheme.colorScheme.onTertiary
             )
         }
     }

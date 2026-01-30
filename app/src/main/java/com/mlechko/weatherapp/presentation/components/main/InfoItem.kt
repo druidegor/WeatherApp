@@ -29,13 +29,14 @@ fun InfoItem(
         Text(
             text = title,
             fontSize = 11.sp,
-            fontWeight = FontWeight.Black
+            fontWeight = FontWeight.Black,
+            color = MaterialTheme.colorScheme.onPrimary
         )
         Text(
             text = content,
             fontSize = 9.sp,
             fontWeight = FontWeight.Black,
-            color = MaterialTheme.colorScheme.onSecondary.copy(0.5f)
+            color = MaterialTheme.colorScheme.onTertiary.copy(0.5f)
         )
     }
 }

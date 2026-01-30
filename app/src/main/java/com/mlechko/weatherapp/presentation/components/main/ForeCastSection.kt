@@ -16,6 +16,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -36,7 +37,7 @@ fun ForeCastSection(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .background(Color(0xFFD4D1F0))
+            .background(MaterialTheme.colorScheme.tertiary)
             .padding(horizontal = 16.dp, vertical = 48.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -50,7 +51,7 @@ fun ForeCastSection(
                 text = "Today",
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Black,
-                color = Grey
+                color = MaterialTheme.colorScheme.onPrimary
             )
 
             Row(
@@ -63,7 +64,7 @@ fun ForeCastSection(
                     text = "Next 7 days ",
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Black,
-                    color = Grey
+                    color = MaterialTheme.colorScheme.onPrimary
                 )
                 Icon(
                     imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,

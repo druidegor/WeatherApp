@@ -17,7 +17,7 @@ import com.mlechko.weatherapp.R
 import com.mlechko.weatherapp.presentation.model.InfoCardUI
 
 
-@Preview
+
 @Composable
 fun InfoCard(
     modifier: Modifier = Modifier,
@@ -30,7 +30,7 @@ fun InfoCard(
                 shape = RoundedCornerShape(20.dp)
                 )
             .clip(RoundedCornerShape(20.dp))
-            .background(MaterialTheme.colorScheme.secondary)
+            .background(MaterialTheme.colorScheme.tertiary)
             .padding(horizontal = 24.dp, vertical = 16.dp),
         horizontalArrangement = Arrangement.SpaceEvenly
     ) {

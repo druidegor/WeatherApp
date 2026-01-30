@@ -26,7 +26,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mlechko.weatherapp.presentation.model.IconUI
 import com.mlechko.weatherapp.presentation.theme.ui.Grey
-import com.mlechko.weatherapp.presentation.theme.ui.PurpleGradient
 import com.mlechko.weatherapp.presentation.theme.ui.WeatherBackgroundCard
 
 
@@ -37,7 +36,9 @@ fun MainWeatherCard(
     temperature: String,
     description: String
 ) {
-    val textColor = if (icon.isNight) MaterialTheme.colorScheme.onPrimary else Grey
+    val textColor = if (icon.isNight) MaterialTheme.colorScheme.onSecondary else MaterialTheme.colorScheme.onPrimary
+    val cardColor = if (icon.isNight) MaterialTheme.colorScheme.secondary else MaterialTheme.colorScheme.primary
+
 
     Box(
         modifier = modifier
@@ -45,14 +46,11 @@ fun MainWeatherCard(
             .height(290.dp),
         contentAlignment = Alignment.TopCenter
     ) {
-        WeatherBackgroundCard(
-            modifier = Modifier.clip(RoundedCornerShape(48.dp)),
-            isNight = icon.isNight
-        )
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .clip(RoundedCornerShape(48.dp))
+                .background(cardColor)
                 .padding(horizontal = 28.dp,vertical = 16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {

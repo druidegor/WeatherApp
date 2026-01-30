@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -23,7 +24,6 @@ import com.mlechko.weatherapp.presentation.model.DailyWeatherUI
 import com.mlechko.weatherapp.presentation.theme.ui.Grey
 import com.mlechko.weatherapp.presentation.theme.ui.Grey200
 
-@Preview
 @Composable
 fun DailyCardItem(
     modifier: Modifier = Modifier,
@@ -37,9 +37,8 @@ fun DailyCardItem(
             Image(
                 painter = painterResource(id = dayInfo.iconCode),
                 contentDescription = "Weather picture",
-                modifier = Modifier.size(96.dp)
+                modifier = Modifier.size(72.dp)
             )
-
 
             Row(
                 modifier = Modifier
@@ -51,23 +50,24 @@ fun DailyCardItem(
                     text = dayInfo.temperature,
                     fontWeight = FontWeight.Black,
                     fontSize = 36.sp,
-                    color = Grey
+                    color = MaterialTheme.colorScheme.onTertiary
                 )
                 Spacer(Modifier.width(8.dp))
                 Column(
+                    horizontalAlignment = Alignment.End
                 ) {
                     val date = dayInfo.time.split(",")
                     Text(
                         text = date[0],
                         fontWeight = FontWeight.ExtraBold,
                         fontSize = 13.sp,
-                        color = Grey
+                        color = MaterialTheme.colorScheme.onTertiary
                     )
                     Text(
                         text = date[1],
                         fontWeight = FontWeight.ExtraBold,
-                        fontSize = 13.sp,
-                        color = Grey200
+                        fontSize = 9.sp,
+                        color = MaterialTheme.colorScheme.onTertiary.copy(0.4f)
                     )
                 }
             }

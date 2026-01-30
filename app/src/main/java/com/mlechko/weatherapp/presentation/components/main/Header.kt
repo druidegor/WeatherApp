@@ -25,13 +25,13 @@ fun Header(
             text = city,
             fontSize = 24.sp,
             fontWeight = FontWeight.ExtraBold,
-            color = MaterialTheme.colorScheme.onBackground
+            color = MaterialTheme.colorScheme.onPrimary
         )
         Text(
             text = time,
             fontSize = 14.sp,
             fontWeight = FontWeight.SemiBold,
-            color = MaterialTheme.colorScheme.onBackground
+            color = MaterialTheme.colorScheme.onPrimary
         )
     }
 }

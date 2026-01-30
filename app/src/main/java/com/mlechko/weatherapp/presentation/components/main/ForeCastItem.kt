@@ -35,8 +35,8 @@ fun ForeCastItem(
     info: HourlyWeatherUI
 ) {
 
-    val textColor = if (info.iconInfo.isNight) Color.White else Color.Black
-    val backColor = if (info.iconInfo.isNight) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.secondary
+    val textColor = if (info.iconInfo.isNight) MaterialTheme.colorScheme.onSecondary else MaterialTheme.colorScheme.onPrimary
+    val cardColor = if (info.iconInfo.isNight) MaterialTheme.colorScheme.secondary else MaterialTheme.colorScheme.primary
 
     Box(
         modifier = modifier
@@ -44,18 +44,13 @@ fun ForeCastItem(
             .height(150.dp),
         contentAlignment = Alignment.Center
     ) {
-        WeatherBackgroundItem(
-            modifier = Modifier
-                .clip(RoundedCornerShape(32.dp))
-                .width(100.dp),
-            isNight = info.iconInfo.isNight
-        )
             Column(
                 modifier = Modifier
                  .width(100.dp)
                  .fillMaxSize()
-                .clip(RoundedCornerShape(32.dp))
-                .padding(horizontal = 8.dp, vertical = 8.dp),
+                 .clip(RoundedCornerShape(32.dp))
+                 .background(cardColor)
+                 .padding(horizontal = 8.dp, vertical = 8.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(4.dp)
         ) {

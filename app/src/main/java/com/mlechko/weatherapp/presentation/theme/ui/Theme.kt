@@ -15,14 +15,13 @@ private val DarkColorScheme = darkColorScheme(
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = ForecastTop,
-    onPrimary = WhiteText,
-    secondary = White,
-    onSecondary = WhiteTextOnSecondaryCard,
-    background = WhiteBackground,
-    onBackground = Grey,
-    tertiary = WhiteTertiary
-
+    primary = Grey200,
+    onPrimary = Black,
+    secondary = Pink400,
+    onSecondary = White,
+    background = Pink200,
+    tertiary = Pink100,
+    onTertiary = Grey
 
     /* Other default colors to override
     background = Color(0xFFFFFBFE),

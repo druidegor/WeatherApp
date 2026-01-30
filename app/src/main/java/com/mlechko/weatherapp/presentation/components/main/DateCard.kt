@@ -22,14 +22,14 @@ fun DateCard(
     Box(
         modifier = modifier
             .clip(RoundedCornerShape(40.dp))
-            .background(MaterialTheme.colorScheme.secondary.copy(alpha = 0.9f))
+            .background(MaterialTheme.colorScheme.onSecondary.copy(alpha = 0.95f))
             .padding(horizontal = 13.dp, vertical = 10.dp)
     ) {
         Text(
             text = date,
             fontSize = 11.sp,
             fontWeight = FontWeight.Bold,
-            color = MaterialTheme.colorScheme.onBackground
+            color = MaterialTheme.colorScheme.onPrimary
         )
     }
 }

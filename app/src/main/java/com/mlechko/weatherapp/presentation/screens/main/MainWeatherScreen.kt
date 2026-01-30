@@ -87,7 +87,8 @@ fun WeatherScreen(
 
         Spacer(Modifier.height(16.dp))
 
-        Box {
+        Box(
+        ) {
 
             InfoCard(
                 modifier = Modifier

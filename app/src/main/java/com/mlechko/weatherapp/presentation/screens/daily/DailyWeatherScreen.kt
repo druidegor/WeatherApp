@@ -22,9 +22,7 @@ import com.mlechko.weatherapp.domain.DailyWeather
 import com.mlechko.weatherapp.presentation.components.daily.CurrentWeatherCard
 import com.mlechko.weatherapp.presentation.components.daily.DailyCard
 import com.mlechko.weatherapp.presentation.components.daily.DateCard
-import com.mlechko.weatherapp.presentation.theme.ui.DailyBackground
-import com.mlechko.weatherapp.presentation.theme.ui.Grey
-import com.mlechko.weatherapp.presentation.theme.ui.PurpleGradient
+
 
 
 @Composable
@@ -62,10 +60,6 @@ fun DailyScreen(
     onClick: () -> Unit
 ) {
 
-        Box(
-            modifier = modifier.fillMaxSize()
-        ) {
-
             Column(
                 modifier = Modifier
                     .fillMaxSize()
@@ -93,4 +87,3 @@ fun DailyScreen(
                 )
             }
         }
-}
