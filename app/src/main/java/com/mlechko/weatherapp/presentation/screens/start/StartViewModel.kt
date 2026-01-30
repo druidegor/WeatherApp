@@ -1,5 +1,6 @@
 package com.mlechko.weatherapp.presentation.screens.start
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mlechko.weatherapp.data.CityRepositoryImpl
@@ -17,27 +18,30 @@ class StartViewModel(
     private val _state = MutableStateFlow<ScreenState>(ScreenState.Loading)
     val state = _state.asStateFlow()
 
-    init {
+    fun load() {
+
         viewModelScope.launch {
+            val gpsCity = locationRepository.getCityFromGps()
 
-            val savedCity = cityRepository.getSavedCity()
+            if (gpsCity != null ) {
 
-            if (savedCity != null) {
+                cityRepository.saveCity(gpsCity)
                 _state.value = ScreenState.MainScreen
-            } else {
 
-                val gpsCity = locationRepository.getCityFromGps()
-
-                if (gpsCity != null ) {
-                    cityRepository.saveCity(gpsCity)
-                    _state.value = ScreenState.MainScreen
-                } else {
-                    _state.value = ScreenState.PickerScreen
-                }
             }
+            else {
 
+                val savedCity = cityRepository.getSavedCity()
+
+                    if (savedCity != null) {
+                        _state.value = ScreenState.MainScreen
+                      } else {
+                         _state.value = ScreenState.PickerScreen
+                     }
+            }
         }
     }
+
 }
 
 sealed interface ScreenState {

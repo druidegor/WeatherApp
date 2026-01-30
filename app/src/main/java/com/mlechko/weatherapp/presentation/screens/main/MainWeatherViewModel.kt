@@ -28,6 +28,7 @@ class MainWeatherViewModel(context: Context): ViewModel() {
             try {
                 val city = cityRepository.getSavedCity()
                 if (city != null) {
+                    Log.d("GPS", "ERROR1")
                     val weather = repository.getWeather(city).toWeatherUIState()
                     _state.value = WeatherScreenState.Content(
                         uiState = weather

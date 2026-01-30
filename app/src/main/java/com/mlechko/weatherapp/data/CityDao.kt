@@ -8,7 +8,7 @@ import androidx.room.Query
 @Dao
 interface CityDao {
 
-    @Query("SELECT *FROM city WHERE id = 0")
+    @Query("SELECT *FROM city LIMIT 1")
     suspend fun getCity(): CityDbModel?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

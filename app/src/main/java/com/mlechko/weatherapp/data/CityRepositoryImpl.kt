@@ -1,6 +1,7 @@
 package com.mlechko.weatherapp.data
 
 import android.content.Context
+import android.util.Log
 import com.mlechko.weatherapp.domain.City
 import com.mlechko.weatherapp.domain.CityRepository
 
@@ -12,10 +13,13 @@ class CityRepositoryImpl private constructor(
     private val dao = database.cityDao()
 
     override suspend fun getSavedCity(): City? {
-        return dao.getCity()?.toEntity()
+        val city = dao.getCity()?.toEntity()
+        Log.d("DB", "Loaded city: $city")
+        return city
     }
 
     override suspend fun saveCity(city: City) {
+        Log.d("DB", "Saving city: $city")
         dao.saveCity(city.toDbModel())
     }
 
