@@ -4,9 +4,8 @@ import android.content.Context
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mlechko.weatherapp.data.CityRepositoryImpl
-import com.mlechko.weatherapp.data.TestWeatherRepository
-import com.mlechko.weatherapp.domain.City
+import com.mlechko.weatherapp.data.cities.CityRepositoryImpl
+import com.mlechko.weatherapp.data.remote.TestWeatherRepository
 import com.mlechko.weatherapp.presentation.model.WeatherUIState
 import com.mlechko.weatherapp.presentation.model.toWeatherUIState
 import kotlinx.coroutines.flow.MutableStateFlow

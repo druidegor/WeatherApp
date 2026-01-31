@@ -1,4 +1,4 @@
-package com.mlechko.weatherapp.data
+package com.mlechko.weatherapp.data.cities
 
 import androidx.room.Dao
 import androidx.room.Insert

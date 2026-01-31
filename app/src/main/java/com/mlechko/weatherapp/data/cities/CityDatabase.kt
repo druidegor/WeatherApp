@@ -1,4 +1,4 @@
-package com.mlechko.weatherapp.data
+package com.mlechko.weatherapp.data.cities
 
 import android.content.Context
 import androidx.room.Database

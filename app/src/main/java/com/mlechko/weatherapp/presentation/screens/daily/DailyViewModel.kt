@@ -3,12 +3,10 @@ package com.mlechko.weatherapp.presentation.screens.daily
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mlechko.weatherapp.data.CityRepositoryImpl
-import com.mlechko.weatherapp.data.TestWeatherRepository
-import com.mlechko.weatherapp.domain.City
+import com.mlechko.weatherapp.data.cities.CityRepositoryImpl
+import com.mlechko.weatherapp.data.remote.TestWeatherRepository
 import com.mlechko.weatherapp.presentation.model.WeatherUIState
 import com.mlechko.weatherapp.presentation.model.toWeatherUIState
-import com.mlechko.weatherapp.presentation.screens.main.WeatherScreenState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch

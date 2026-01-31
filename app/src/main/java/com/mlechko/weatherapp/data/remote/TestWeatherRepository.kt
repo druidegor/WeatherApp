@@ -1,9 +1,5 @@
-package com.mlechko.weatherapp.data
+package com.mlechko.weatherapp.data.remote
 
-import android.util.Log
-import com.mlechko.weatherapp.BuildConfig
-import com.mlechko.weatherapp.data.remote.ApiFactory
-import com.mlechko.weatherapp.data.remote.toDomain
 import com.mlechko.weatherapp.domain.City
 import com.mlechko.weatherapp.domain.WeatherRepository
 import com.mlechko.weatherapp.domain.model.Weather

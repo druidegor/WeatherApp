@@ -3,7 +3,6 @@ package com.mlechko.weatherapp.presentation.screens.start
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
-import android.util.Log
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Box
@@ -18,9 +17,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.mlechko.weatherapp.data.CityRepositoryImpl
+import com.mlechko.weatherapp.data.cities.CityRepositoryImpl
 import com.mlechko.weatherapp.data.LocationRepositoryImpl
-import com.mlechko.weatherapp.domain.City
 
 @Composable
 fun StartScreen(

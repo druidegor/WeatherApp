@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import com.mlechko.weatherapp.navigation.NavGraph
+import com.mlechko.weatherapp.presentation.screens.picker.PickerScreen
 import com.mlechko.weatherapp.presentation.theme.ui.WeatherAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -17,11 +18,12 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             WeatherAppTheme {
-                Scaffold(
-                    modifier = Modifier.Companion.fillMaxSize(),
-                ) { innerPadding ->
-                    NavGraph(Modifier.Companion.padding(innerPadding))
-                }
+//                Scaffold(
+//                    modifier = Modifier.Companion.fillMaxSize(),
+//                ) { innerPadding ->
+//                    NavGraph(Modifier.Companion.padding(innerPadding))
+//                }
+                PickerScreen()
             }
             }
         }

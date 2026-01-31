@@ -1,10 +1,8 @@
 package com.mlechko.weatherapp.presentation.screens.start
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mlechko.weatherapp.data.CityRepositoryImpl
-import com.mlechko.weatherapp.domain.City
+import com.mlechko.weatherapp.data.cities.CityRepositoryImpl
 import com.mlechko.weatherapp.domain.LocationRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
