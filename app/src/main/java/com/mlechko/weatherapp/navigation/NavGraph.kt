@@ -10,6 +10,7 @@ import androidx.navigation.compose.rememberNavController
 import com.mlechko.weatherapp.domain.City
 import com.mlechko.weatherapp.presentation.screens.daily.DailyWeatherScreen
 import com.mlechko.weatherapp.presentation.screens.main.MainWeatherScreen
+import com.mlechko.weatherapp.presentation.screens.picker.PickerScreen
 import com.mlechko.weatherapp.presentation.screens.start.StartScreen
 
 @Composable
@@ -31,7 +32,7 @@ fun NavGraph(
                     navController.navigate(Screen.Main.route)
                 },
                 onGoToPicker = {
-                    navController.navigate(Screen.Main.route)
+                    navController.navigate(Screen.Picker.route)
                 }
             )
         }
@@ -40,6 +41,9 @@ fun NavGraph(
             MainWeatherScreen(
                 onClick = {
                     navController.navigate(Screen.Daily.route)
+                },
+                onPickerScreen = {
+                    navController.navigate(Screen.Picker.route)
                 }
             )
         }
@@ -47,6 +51,17 @@ fun NavGraph(
             DailyWeatherScreen(
                 onClick = {
                     navController.popBackStack()
+                }
+            )
+        }
+
+        composable(Screen.Picker.route) {
+            PickerScreen(
+                onBackClick = {
+                    navController.popBackStack()
+                },
+                onAddClick = {
+                    navController.navigate(Screen.Main.route)
                 }
             )
         }
@@ -60,4 +75,6 @@ sealed class Screen(val route: String) {
     data object Main: Screen("main")
 
     data object Daily: Screen("daily")
+
+    data object Picker: Screen("picker")
 }

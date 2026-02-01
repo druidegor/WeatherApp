@@ -27,7 +27,7 @@ fun Weather.toWeatherUIState(): WeatherUIState {
         weatherType = currentWeather.type.toWeatherTypeUI(),
         infoCardUI = InfoCardUI(
             "${currentWeather.humidity}%",
-            "${currentWeather.windSpeed} km/h",
+            "${String.format(Locale.getDefault(),"%.1f", currentWeather.windSpeed)} km/h",
             "${currentWeather.pressure}",
             "${currentWeather.visibility / 1000} km"
         ),

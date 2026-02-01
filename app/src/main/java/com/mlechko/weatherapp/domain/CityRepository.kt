@@ -1,8 +1,10 @@
 package com.mlechko.weatherapp.domain
 
+import kotlinx.coroutines.flow.Flow
+
 interface CityRepository {
 
-    suspend fun getSavedCity(): City?
+    fun getSavedCity(): Flow<List<City>>
 
     suspend fun saveCity(city: City)
 

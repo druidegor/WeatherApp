@@ -10,6 +10,7 @@ import com.mlechko.weatherapp.presentation.model.WeatherUIState
 import com.mlechko.weatherapp.presentation.model.toWeatherUIState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class MainWeatherViewModel(context: Context): ViewModel() {
@@ -25,20 +26,22 @@ class MainWeatherViewModel(context: Context): ViewModel() {
         viewModelScope.launch {
 
             try {
-                val city = cityRepository.getSavedCity()
-                if (city != null) {
-                    Log.d("GPS", "ERROR1")
-                    val weather = repository.getWeather(city).toWeatherUIState()
-                    _state.value = WeatherScreenState.Content(
-                        uiState = weather
-                    )
-                } else _state.value = WeatherScreenState.Error
+                cityRepository.getSavedCity().collect {
+                    if (!it.isEmpty()) {
+                        val weather = repository.getWeather(it.first()).toWeatherUIState()
+                        _state.value = WeatherScreenState.Content(
+                            uiState = weather
+                        )
+                        Log.d("DB", "New city list: ${weather.cityName}")
+                    }
+                    else {
+                        _state.value = WeatherScreenState.Error
+                    }
+                }
             } catch (e: Exception) {
                 _state.value = WeatherScreenState.Error
             }
         }
-
-
     }
 }
 sealed interface WeatherScreenState {

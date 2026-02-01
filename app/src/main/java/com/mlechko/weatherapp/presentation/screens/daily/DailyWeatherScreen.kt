@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -59,31 +60,34 @@ fun DailyScreen(
     state: DailyScreenState.Content,
     onClick: () -> Unit
 ) {
+    Scaffold(
+        modifier=modifier
+    ) { innerPadding ->
+        Column(
+            modifier = Modifier.padding(innerPadding)
+                .fillMaxSize()
+                .padding(bottom = 24.dp, start = 24.dp, end = 24.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
 
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(bottom = 24.dp, start = 24.dp, end = 24.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
+            DateCard(
+                date = state.uiState.currentDate,
+                onClick = onClick
+            )
 
-                DateCard(
-                    date = state.uiState.currentDate,
-                    onClick = onClick
-                )
+            Spacer(Modifier.height(48.dp))
 
-                Spacer(Modifier.height(48.dp))
+            CurrentWeatherCard(
+                temperature = state.uiState.temperature,
+                description = state.uiState.description,
+                iconCode = state.uiState.iconInfo.iconCode
+            )
 
-                CurrentWeatherCard(
-                    temperature = state.uiState.temperature,
-                    description = state.uiState.description,
-                    iconCode = state.uiState.iconInfo.iconCode
-                )
+            Spacer(Modifier.height(48.dp))
 
-                Spacer(Modifier.height(48.dp))
-
-                DailyCard(
-                    days = state.uiState.dailyWeatherUI
-                )
-            }
+            DailyCard(
+                days = state.uiState.dailyWeatherUI
+            )
         }
+    }
+    }

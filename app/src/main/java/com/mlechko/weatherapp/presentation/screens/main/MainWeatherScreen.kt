@@ -8,22 +8,29 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.mlechko.weatherapp.R
 import com.mlechko.weatherapp.domain.City
 import com.mlechko.weatherapp.presentation.components.main.ForeCastSection
 import com.mlechko.weatherapp.presentation.components.main.Header
 import com.mlechko.weatherapp.presentation.components.main.InfoCard
 import com.mlechko.weatherapp.presentation.components.main.WeatherCardWithDate
+import com.mlechko.weatherapp.presentation.theme.ui.CustomIcons
 
 @Composable
 fun MainWeatherScreen(
@@ -32,26 +39,46 @@ fun MainWeatherScreen(
     viewModel: MainWeatherViewModel = viewModel {
         MainWeatherViewModel(context)
     },
-    onClick: () -> Unit
+    onClick: () -> Unit,
+    onPickerScreen: () -> Unit
 ) {
 
     val state by viewModel.state.collectAsState()
 
-    when(val content = state) {
-        is WeatherScreenState.Loading -> {
-
-        }
-        is WeatherScreenState.Content -> {
-            WeatherScreen(
-                modifier = modifier,
-                state = content,
-                onClick = onClick
+    Scaffold(
+        modifier =modifier,
+        floatingActionButton = {
+            FloatingActionButton(
+                onClick = onPickerScreen,
+                contentColor = MaterialTheme.colorScheme.onPrimary,
+                containerColor = MaterialTheme.colorScheme.primary,
+                shape = CircleShape
+            ) {
+                Icon(
+                    imageVector = CustomIcons.AddCity,
+                    contentDescription = "Button to picker screen"
                 )
+            }
         }
-        is WeatherScreenState.Error -> {
-            Log.d("VM","Error!!")
+    ) { innerPadding ->
+        when(val content = state) {
+            is WeatherScreenState.Loading -> {
+
+            }
+            is WeatherScreenState.Content -> {
+                WeatherScreen(
+                    modifier = Modifier.padding(innerPadding),
+                    state = content,
+                    onClick = onClick
+                )
+            }
+            is WeatherScreenState.Error -> {
+                Log.d("VM","Error!!")
+            }
         }
     }
+
+
 
 
 
@@ -62,7 +89,7 @@ fun MainWeatherScreen(
 fun WeatherScreen(
     modifier: Modifier = Modifier,
     state: WeatherScreenState.Content,
-    onClick: () -> Unit
+    onClick: () -> Unit,
 ) {
 
     Column(
@@ -99,7 +126,7 @@ fun WeatherScreen(
 
             ForeCastSection(
                 modifier = Modifier
-                    .padding(top = 96.dp)
+                    .padding(top = 96.dp, bottom = 4.dp)
                     .zIndex(0f),
                 hourlyWeather = state.uiState.hourlyWeatherUI,
                 onClick = onClick

@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 
 @Database(
     entities = [CityDbModel::class],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 abstract class CityDatabase: RoomDatabase() {
@@ -33,7 +33,8 @@ abstract class CityDatabase: RoomDatabase() {
                     context = context,
                     klass = CityDatabase::class.java,
                     name = "city.db"
-                ).build().also {
+                ).fallbackToDestructiveMigration(dropAllTables = true)
+                    .build().also {
                     instance = it
                 }
             }

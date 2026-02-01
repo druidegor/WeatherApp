@@ -18,12 +18,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             WeatherAppTheme {
-//                Scaffold(
-//                    modifier = Modifier.Companion.fillMaxSize(),
-//                ) { innerPadding ->
-//                    NavGraph(Modifier.Companion.padding(innerPadding))
-//                }
-                PickerScreen()
+                NavGraph()
             }
             }
         }

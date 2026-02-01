@@ -9,6 +9,7 @@ import com.mlechko.weatherapp.presentation.model.WeatherUIState
 import com.mlechko.weatherapp.presentation.model.toWeatherUIState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class DailyViewModel(
@@ -26,12 +27,14 @@ class DailyViewModel(
         viewModelScope.launch {
 
             try {
-                val city = cityRepository.getSavedCity()
-                if (city != null) {
-                    val weather = repository.getWeather(city).toWeatherUIState()
-                    _state.value = DailyScreenState.Content(weather)
+                cityRepository.getSavedCity().collect {
+                    if (!it.isEmpty()) {
+                        val weather = repository.getWeather(it.first()).toWeatherUIState()
+                        _state.value = DailyScreenState.Content(weather)
+                    }
+                    else _state.value = DailyScreenState.Error
                 }
-               else _state.value = DailyScreenState.Error
+
             }
             catch(e: Exception) {
                 _state.value = DailyScreenState.Error

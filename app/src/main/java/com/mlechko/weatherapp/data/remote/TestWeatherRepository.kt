@@ -6,19 +6,19 @@ import com.mlechko.weatherapp.domain.model.Weather
 
 object TestWeatherRepository: WeatherRepository {
 
-    private var cachedWeather: Weather? = null
+    private var cachedWeather: MutableMap<City, Weather> = mutableMapOf()
     private val api = ApiFactory.createWeatherApi()
     override suspend fun getWeather(city: City): Weather {
 
-        cachedWeather?.let {
+        cachedWeather[city]?.let {
             return it
         }
         val response =  api.getWeather(
             lat = city.lat,
             lon = city.lon,
             apiKey = "38d370f5b965a31f95aff5e5e0bf9b6f"
-        )
-        cachedWeather = response.toDomain()
-        return response.toDomain()
+        ).toDomain()
+        cachedWeather[city] = response
+        return response
     }
 }
