@@ -1,24 +1,22 @@
 package com.mlechko.weatherapp.presentation.screens.daily
 
-import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mlechko.weatherapp.data.cities.CityRepositoryImpl
-import com.mlechko.weatherapp.data.remote.TestWeatherRepository
+import com.mlechko.weatherapp.domain.CityRepository
+import com.mlechko.weatherapp.domain.WeatherRepository
 import com.mlechko.weatherapp.presentation.model.WeatherUIState
 import com.mlechko.weatherapp.presentation.model.toWeatherUIState
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class DailyViewModel(
-    context: Context
+@HiltViewModel
+class DailyViewModel @Inject constructor(
+    private val cityRepository: CityRepository,
+    private val weatherRepository: WeatherRepository
 ): ViewModel() {
-
-    val cityRepository = CityRepositoryImpl.getInstance(context)
-    val repository = TestWeatherRepository
-
     val _state = MutableStateFlow<DailyScreenState>(DailyScreenState.Loading)
     val state = _state.asStateFlow()
 
@@ -29,7 +27,7 @@ class DailyViewModel(
             try {
                 cityRepository.getSavedCity().collect {
                     if (!it.isEmpty()) {
-                        val weather = repository.getWeather(it.first()).toWeatherUIState()
+                        val weather = weatherRepository.getWeather(it.first()).toWeatherUIState()
                         _state.value = DailyScreenState.Content(weather)
                     }
                     else _state.value = DailyScreenState.Error

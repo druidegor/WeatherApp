@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.hilt.android)
 
 }
 
@@ -51,6 +52,9 @@ android {
 
 dependencies {
 
+    ksp (libs.hilt.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
+    implementation(libs.hilt.android)
     implementation(libs.kotlinx.coroutines.play.services)
     implementation(libs.play.services.location)
     ksp(libs.androidx.room.compiler)

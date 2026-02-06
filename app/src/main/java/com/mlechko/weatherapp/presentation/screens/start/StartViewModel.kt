@@ -2,14 +2,17 @@ package com.mlechko.weatherapp.presentation.screens.start
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mlechko.weatherapp.data.cities.CityRepositoryImpl
+import com.mlechko.weatherapp.domain.CityRepository
 import com.mlechko.weatherapp.domain.LocationRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class StartViewModel(
-    private val cityRepository: CityRepositoryImpl,
+@HiltViewModel
+class StartViewModel @Inject constructor(
+    private val cityRepository: CityRepository,
     private val locationRepository: LocationRepository
 ): ViewModel() {
 
@@ -30,12 +33,11 @@ class StartViewModel(
             else {
 
                 val savedCity = cityRepository.getSavedCity()
-
                     if (savedCity != null) {
                         _state.value = ScreenState.MainScreen
                       } else {
                          _state.value = ScreenState.PickerScreen
-                     }
+                    }
             }
         }
     }
@@ -43,7 +45,7 @@ class StartViewModel(
 }
 
 sealed interface ScreenState {
-    object Loading: ScreenState
-    object MainScreen: ScreenState
-    object PickerScreen: ScreenState
+    object Loading : ScreenState
+    object MainScreen : ScreenState
+    object PickerScreen : ScreenState
 }

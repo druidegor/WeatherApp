@@ -11,12 +11,14 @@ import com.google.android.gms.tasks.CancellationTokenSource
 import com.google.android.gms.tasks.Tasks
 import com.mlechko.weatherapp.domain.City
 import com.mlechko.weatherapp.domain.LocationRepository
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
 
-class LocationRepositoryImpl(
-    private val context: Context
+class LocationRepositoryImpl @Inject constructor(
+    @ApplicationContext private val context: Context
 ): LocationRepository {
 
     private val client = LocationServices.getFusedLocationProviderClient(context)
@@ -55,20 +57,4 @@ class LocationRepositoryImpl(
         ) == PackageManager.PERMISSION_GRANTED
     }
 
-    companion object {
-
-        private var instance: LocationRepositoryImpl? = null
-        private val LOCK = Any()
-
-        fun getInstance(context: Context): LocationRepositoryImpl {
-
-            instance?.let { return it }
-
-            synchronized(LOCK) {
-                instance?.let { return it }
-
-                return LocationRepositoryImpl(context).also { instance= it }
-            }
-        }
-    }
 }

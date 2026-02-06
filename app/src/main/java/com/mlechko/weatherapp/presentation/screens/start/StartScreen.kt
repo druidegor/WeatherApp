@@ -1,7 +1,6 @@
 package com.mlechko.weatherapp.presentation.screens.start
 
 import android.Manifest
-import android.content.Context
 import android.content.pm.PackageManager
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -16,24 +15,17 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.mlechko.weatherapp.data.cities.CityRepositoryImpl
-import com.mlechko.weatherapp.data.LocationRepositoryImpl
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 
 @Composable
 fun StartScreen(
     modifier: Modifier = Modifier,
-    context: Context = LocalContext.current.applicationContext,
-    viewModel: StartViewModel = viewModel {
-        StartViewModel(
-            cityRepository = CityRepositoryImpl.getInstance(context),
-            locationRepository = LocationRepositoryImpl.getInstance(context)
-        )
-    },
+    viewModel: StartViewModel = hiltViewModel(),
     onGoToMain: () -> Unit,
     onGoToPicker: () -> Unit
 ) {
 
+    val context = LocalContext.current
 
     val permissionLauncher = rememberLauncherForActivityResult(
         ActivityResultContracts.RequestPermission()

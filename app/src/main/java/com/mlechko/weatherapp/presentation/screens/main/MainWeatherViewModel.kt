@@ -1,22 +1,25 @@
 package com.mlechko.weatherapp.presentation.screens.main
 
-import android.content.Context
+
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mlechko.weatherapp.data.cities.CityRepositoryImpl
-import com.mlechko.weatherapp.data.remote.TestWeatherRepository
+import com.mlechko.weatherapp.domain.CityRepository
+import com.mlechko.weatherapp.domain.WeatherRepository
 import com.mlechko.weatherapp.presentation.model.WeatherUIState
 import com.mlechko.weatherapp.presentation.model.toWeatherUIState
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class MainWeatherViewModel(context: Context): ViewModel() {
+@HiltViewModel
+class MainWeatherViewModel @Inject constructor(
+    private val cityRepository: CityRepository,
+    private val weatherRepository: WeatherRepository
+): ViewModel() {
 
-    private val cityRepository = CityRepositoryImpl.getInstance(context)
-    private val repository = TestWeatherRepository
 
     private val _state = MutableStateFlow<WeatherScreenState>(WeatherScreenState.Loading)
 
@@ -28,7 +31,7 @@ class MainWeatherViewModel(context: Context): ViewModel() {
             try {
                 cityRepository.getSavedCity().collect {
                     if (!it.isEmpty()) {
-                        val weather = repository.getWeather(it.first()).toWeatherUIState()
+                        val weather = weatherRepository.getWeather(it.first()).toWeatherUIState()
                         _state.value = WeatherScreenState.Content(
                             uiState = weather
                         )

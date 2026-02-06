@@ -1,7 +1,5 @@
 package com.mlechko.weatherapp.data.remote
 
-import com.mlechko.weatherapp.R
-import com.mlechko.weatherapp.domain.City
 import com.mlechko.weatherapp.domain.CurrentWeather
 import com.mlechko.weatherapp.domain.DailyWeather
 import com.mlechko.weatherapp.domain.HourlyWeather

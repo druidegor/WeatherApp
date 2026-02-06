@@ -1,13 +1,11 @@
 package com.mlechko.weatherapp.navigation
 
-import android.os.Bundle
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-
+import androidx.lifecycle.Lifecycle
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.mlechko.weatherapp.domain.City
 import com.mlechko.weatherapp.presentation.screens.daily.DailyWeatherScreen
 import com.mlechko.weatherapp.presentation.screens.main.MainWeatherScreen
 import com.mlechko.weatherapp.presentation.screens.picker.PickerScreen
@@ -40,17 +38,29 @@ fun NavGraph(
         composable(Screen.Main.route) {
             MainWeatherScreen(
                 onClick = {
-                    navController.navigate(Screen.Daily.route)
+                    navController.navigate(Screen.Daily.route) {
+                        launchSingleTop = true
+                    }
                 },
                 onPickerScreen = {
-                    navController.navigate(Screen.Picker.route)
+                    navController.navigate(Screen.Picker.route) {
+                        launchSingleTop = true
+                    }
                 }
             )
         }
         composable(Screen.Daily.route) {
             DailyWeatherScreen(
                 onClick = {
-                    navController.popBackStack()
+                    val canGoBack = navController
+                        .currentBackStackEntry
+                        ?.lifecycle
+                        ?.currentState == Lifecycle.State.RESUMED
+
+                    if (canGoBack) {
+                        navController.popBackStack()
+                    }
+
                 }
             )
         }
@@ -58,10 +68,19 @@ fun NavGraph(
         composable(Screen.Picker.route) {
             PickerScreen(
                 onBackClick = {
-                    navController.popBackStack()
+                    val canGoBack = navController
+                        .currentBackStackEntry
+                        ?.lifecycle
+                        ?.currentState == Lifecycle.State.RESUMED
+
+                    if (canGoBack) {
+                        navController.popBackStack()
+                    }
                 },
                 onAddClick = {
-                    navController.navigate(Screen.Main.route)
+                    navController.navigate(Screen.Main.route) {
+                        launchSingleTop = true
+                    }
                 }
             )
         }
