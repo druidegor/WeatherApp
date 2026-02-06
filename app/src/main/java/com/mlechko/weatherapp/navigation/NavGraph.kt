@@ -27,10 +27,18 @@ fun NavGraph(
             StartScreen(
 
                 onGoToMain = {
-                    navController.navigate(Screen.Main.route)
+                    navController.navigate(Screen.Main.route) {
+                        popUpTo("start") {
+                            inclusive = true
+                        }
+                    }
                 },
                 onGoToPicker = {
-                    navController.navigate(Screen.Picker.route)
+                    navController.navigate(Screen.Picker.route) {
+                        popUpTo("start") {
+                            inclusive = true
+                        }
+                    }
                 }
             )
         }
@@ -80,6 +88,9 @@ fun NavGraph(
                 onAddClick = {
                     navController.navigate(Screen.Main.route) {
                         launchSingleTop = true
+                        popUpTo("picker") {
+                            inclusive = true
+                        }
                     }
                 }
             )

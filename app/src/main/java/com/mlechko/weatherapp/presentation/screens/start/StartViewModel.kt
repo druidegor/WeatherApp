@@ -7,6 +7,7 @@ import com.mlechko.weatherapp.domain.LocationRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -32,8 +33,9 @@ class StartViewModel @Inject constructor(
             }
             else {
 
-                val savedCity = cityRepository.getSavedCity()
-                    if (savedCity != null) {
+                val savedCity = cityRepository.getSavedCity().first()
+
+                    if (savedCity.isNotEmpty()) {
                         _state.value = ScreenState.MainScreen
                       } else {
                          _state.value = ScreenState.PickerScreen
