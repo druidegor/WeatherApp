@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">WeatherApp</string>
+    <string name="search">Поиск…</string>
+    <string name="back">Назад</string>
+    <string name="input_city_name">Введите название города</string>
+    <string name="button_to_picker_screen">Кнопка для перехода на экран ввода города</string>
+    <string name="future_weather">Будущая погода</string>
+    <string name="arrow_left_back_to_main_screen">Возврат на главный экран</string>
+    <string name="today_s_weather">Сегодня</string>
+    <string name="weather_cloud">Погодное облако</string>
+    <string name="today">Сегодня</string>
+    <string name="next_7_days">След. 7 дней</string>
+    <string name="arrow_right">Стрелка вправо</string>
+    <string name="humidity">Влажность</string>
+    <string name="wind">Ветер</string>
+    <string name="air_pressure">Давление</string>
+    <string name="visibility">Видимость</string>
+    <string name="image">картинка</string>
+    <string name="cloud">облако</string>
+</resources>

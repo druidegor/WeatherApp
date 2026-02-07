@@ -19,10 +19,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
+import com.mlechko.weatherapp.R
 import com.mlechko.weatherapp.presentation.model.HourlyWeatherUI
 
 
@@ -43,11 +45,11 @@ fun ForeCastItem(
     ) {
             Column(
                 modifier = Modifier
-                 .width(100.dp)
-                 .fillMaxSize()
-                 .clip(RoundedCornerShape(32.dp))
-                 .background(cardColor)
-                 .padding(horizontal = 8.dp, vertical = 8.dp),
+                    .width(100.dp)
+                    .fillMaxSize()
+                    .clip(RoundedCornerShape(32.dp))
+                    .background(cardColor)
+                    .padding(horizontal = 8.dp, vertical = 8.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(4.dp)
         ) {
@@ -70,42 +72,11 @@ fun ForeCastItem(
         }
             Image(
                 painter = painterResource(id = info.iconInfo.iconCode),
-                contentDescription = "Weather cloud",
+                contentDescription = stringResource(R.string.weather_cloud),
                 modifier = Modifier
                     .size(81.dp)
                     .zIndex(1f)
             )
         }
 
-//    Column(
-//        modifier = modifier
-//            .clip(RoundedCornerShape(25.dp))
-//            .background(
-//                MaterialTheme.colorScheme.primary
-//            )
-//            .padding(horizontal = 8.dp, vertical = 8.dp),
-//        horizontalAlignment = Alignment.CenterHorizontally,
-//        verticalArrangement = Arrangement.spacedBy(4.dp)
-//    ) {
-//        Text(
-//            text = info.time,
-//            fontSize = 12.sp,
-//            fontWeight = FontWeight.SemiBold,
-//            color = MaterialTheme.colorScheme.secondary
-//        )
-//        Image(
-//            painter = image,
-//            contentDescription = "Storm cloud",
-//            modifier = Modifier
-//                .offset(y = (-8).dp)
-//                .size(80.dp)
-//                .zIndex(0f)
-//        )
-//        Text(
-//            text = info.temperature,
-//            fontSize = 18.sp,
-//            fontWeight = FontWeight.Black,
-//            color = MaterialTheme.colorScheme.secondary
-//        )
-//    }
 }

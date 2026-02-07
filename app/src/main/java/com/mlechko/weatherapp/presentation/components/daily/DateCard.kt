@@ -13,9 +13,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.mlechko.weatherapp.R
 
 
 @Composable
@@ -32,7 +34,7 @@ fun DateCard(
     ) {
         Icon(
             imageVector = Icons.AutoMirrored.Filled.KeyboardArrowLeft,
-            contentDescription = "Arrow Left, back to main screen",
+            contentDescription = stringResource(R.string.arrow_left_back_to_main_screen),
             tint = MaterialTheme.colorScheme.onPrimary,
             modifier = Modifier.clickable {
                 onClick()
@@ -45,7 +47,7 @@ fun DateCard(
             horizontalAlignment = Alignment.CenterHorizontally
         ){
             Text(
-                text = "Today's Weather",
+                text = stringResource(R.string.today_s_weather),
                 fontWeight = FontWeight.ExtraBold,
                 fontSize = 24.sp,
                 color = MaterialTheme.colorScheme.onTertiary

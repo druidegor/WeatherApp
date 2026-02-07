@@ -8,8 +8,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import com.mlechko.weatherapp.R
 
 @Composable
 fun InfoItem(
@@ -24,7 +26,7 @@ fun InfoItem(
     ) {
         Image(
             painter = image,
-            contentDescription = "image"
+            contentDescription = stringResource(R.string.image)
         )
         Text(
             text = title,

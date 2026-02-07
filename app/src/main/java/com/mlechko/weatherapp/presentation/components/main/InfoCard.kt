@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.mlechko.weatherapp.R
 import com.mlechko.weatherapp.presentation.model.InfoCardUI
@@ -25,9 +26,9 @@ fun InfoCard(
     Row(
         modifier = modifier
             .shadow(
-                elevation =  8.dp,
+                elevation = 8.dp,
                 shape = RoundedCornerShape(20.dp)
-                )
+            )
             .clip(RoundedCornerShape(20.dp))
             .background(MaterialTheme.colorScheme.tertiary)
             .padding(horizontal = 24.dp, vertical = 16.dp),
@@ -37,25 +38,25 @@ fun InfoCard(
             modifier = Modifier.weight(1f),
             image = painterResource(id = R.drawable.ic_carbon_humidity),
             title = info.humidity,
-            content = "Humidity"
+            content = stringResource(R.string.humidity)
         )
         InfoItem(
             modifier = Modifier.weight(1f),
             image = painterResource(id = R.drawable.ic_tabler_wind),
             title = info.windSpeed,
-            content = "Wind"
+            content = stringResource(R.string.wind)
         )
         InfoItem(
             modifier = Modifier.weight(1f),
             image = painterResource(id = R.drawable.ic_speedometer),
             title = info.pressure,
-            content = "Air pressure"
+            content = stringResource(R.string.air_pressure)
         )
         InfoItem(
             modifier = Modifier.weight(1f),
             image = painterResource(id = R.drawable.ic_round_visibility_),
             title = info.visibility,
-            content = "Visibility"
+            content = stringResource(R.string.visibility)
         )
     }
 }

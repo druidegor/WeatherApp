@@ -33,10 +33,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import com.mlechko.weatherapp.R
 import com.mlechko.weatherapp.domain.City
 
 @Composable
@@ -59,7 +61,7 @@ fun PickerScreen(
             TopAppBar(
                 title = {
                     Text(
-                        text = "Input city name",
+                        text = stringResource(R.string.input_city_name),
                         fontSize = 20.sp,
                         fontWeight = FontWeight.Bold,
                         color= MaterialTheme.colorScheme.onPrimary
@@ -73,12 +75,12 @@ fun PickerScreen(
                 navigationIcon = {
                     Icon(
                         modifier = Modifier
-                            .padding(start=16.dp,end=8.dp)
-                            .clickable{
+                            .padding(start = 16.dp, end = 8.dp)
+                            .clickable {
                                 onBackClick()
                             },
                         imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                        contentDescription = "Back"
+                        contentDescription = stringResource(R.string.back)
                     )
                 }
             )
@@ -137,7 +139,7 @@ private fun SearchBar(
         onValueChange = onQueryChange,
         placeholder = {
             Text (
-                text = "Search...",
+                text = stringResource(R.string.search),
                 fontSize = 14.sp,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
@@ -171,7 +173,11 @@ private fun CityCard(
             .height(90.dp)
             .padding(horizontal = 24.dp, vertical = 8.dp)
             .clip(RoundedCornerShape(16.dp))
-            .border(width = 1.dp, color = MaterialTheme.colorScheme.primary,RoundedCornerShape(16.dp))
+            .border(
+                width = 1.dp,
+                color = MaterialTheme.colorScheme.primary,
+                RoundedCornerShape(16.dp)
+            )
             .background(MaterialTheme.colorScheme.surface)
             .clickable {
                 onClick(city)

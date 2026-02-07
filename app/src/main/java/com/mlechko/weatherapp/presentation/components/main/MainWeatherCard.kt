@@ -19,9 +19,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.mlechko.weatherapp.R
 import com.mlechko.weatherapp.presentation.model.IconUI
 
 
@@ -47,7 +49,7 @@ fun MainWeatherCard(
                 .fillMaxSize()
                 .clip(RoundedCornerShape(48.dp))
                 .background(cardColor)
-                .padding(horizontal = 28.dp,vertical = 16.dp),
+                .padding(horizontal = 28.dp, vertical = 16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Spacer(Modifier.weight(1f))
@@ -66,7 +68,7 @@ fun MainWeatherCard(
         }
         Image(
             painter = painterResource(id = icon.iconCode),
-            contentDescription = "cloud",
+            contentDescription = stringResource(R.string.cloud),
             modifier = Modifier
                 .offset(y = (-8).dp)
                 .size(220.dp)

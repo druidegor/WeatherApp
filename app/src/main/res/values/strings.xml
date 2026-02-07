@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">WeatherApp</string>
+    <string name="search">Search…</string>
+    <string name="back">Back</string>
+    <string name="input_city_name">Input city name</string>
+    <string name="button_to_picker_screen">Button to picker screen</string>
+    <string name="future_weather">Future Weather</string>
+    <string name="arrow_left_back_to_main_screen">Arrow Left, back to main screen</string>
+    <string name="today_s_weather">Today\'s Weather</string>
+    <string name="weather_cloud">Weather cloud</string>
+    <string name="today">Today</string>
+    <string name="next_7_days">"Next 7 days "</string>
+    <string name="arrow_right">Arrow Right</string>
+    <string name="humidity">Humidity</string>
+    <string name="wind">Wind</string>
+    <string name="air_pressure">Air pressure</string>
+    <string name="visibility">Visibility</string>
+    <string name="image">image</string>
+    <string name="cloud">cloud</string>
 </resources>

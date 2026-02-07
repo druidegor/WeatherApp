@@ -5,9 +5,11 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -17,9 +19,11 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import com.mlechko.weatherapp.R
 import com.mlechko.weatherapp.presentation.components.main.ForeCastSection
 import com.mlechko.weatherapp.presentation.components.main.Header
 import com.mlechko.weatherapp.presentation.components.main.InfoCard
@@ -47,14 +51,19 @@ fun MainWeatherScreen(
             ) {
                 Icon(
                     imageVector = CustomIcons.AddCity,
-                    contentDescription = "Button to picker screen"
+                    contentDescription = stringResource(R.string.button_to_picker_screen)
                 )
             }
         }
     ) { innerPadding ->
         when(val content = state) {
             is WeatherScreenState.Loading -> {
-
+                Box(
+                    modifier = modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    CircularProgressIndicator()
+                }
             }
             is WeatherScreenState.Content -> {
                 WeatherScreen(

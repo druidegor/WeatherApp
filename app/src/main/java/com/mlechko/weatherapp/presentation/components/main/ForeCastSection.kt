@@ -21,9 +21,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.mlechko.weatherapp.R
 import com.mlechko.weatherapp.presentation.model.HourlyWeatherUI
 
 @Composable
@@ -46,7 +48,7 @@ fun ForeCastSection(
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
-                text = "Today",
+                text = stringResource(R.string.today),
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Black,
                 color = MaterialTheme.colorScheme.onPrimary
@@ -59,14 +61,14 @@ fun ForeCastSection(
                     }
             ) {
                 Text(
-                    text = "Next 7 days ",
+                    text = stringResource(R.string.next_7_days),
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Black,
                     color = MaterialTheme.colorScheme.onPrimary
                 )
                 Icon(
                     imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
-                    contentDescription = "Arrow Right"
+                    contentDescription = stringResource(R.string.arrow_right)
                 )
             }
 
