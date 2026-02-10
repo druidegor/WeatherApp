@@ -39,9 +39,10 @@
 (добавь сюда изображения из приложения)
 
 ```
-![Main Screen](screenshots/main.png)
+![MainNight Screen](screenshots/mainDay.png)
+![MainDay Screen](screenshots/mainNight.png)
 ![Search City](screenshots/search.png)
-![Weather Details](screenshots/details.png)
+![Weather Details](screenshots/daily.png)
 ```
 
 ---
