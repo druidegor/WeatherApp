@@ -31,6 +31,7 @@
 * Room (локальное хранение)
 * Retrofit (работа с API)
 * Location Services (GPS)
+* Splach Screen Api
 
 ---
 
@@ -58,7 +59,7 @@
 ## API
 
 Приложение использует погодный API для получения данных о погоде.
-(укажи конкретный сервис, например: OpenWeatherMap)
+(OpenWeatherMap)
 
 ---
 
@@ -67,7 +68,7 @@
 1. Клонировать репозиторий:
 
 ```
-git clone https://github.com/yourusername/weatherapp.git
+git clone https://github.com/druidegor/WeatherApp.git
 ```
 
 2. Открыть в Android Studio
@@ -83,7 +84,7 @@ WEATHER_API_KEY=your_key_here
 
 ## Особенности реализации
 
-* Получение координат через FusedLocationProviderClient
+* Получение координат через Nominatim
 * Динамический поиск городов (запрос при изменении текста)
 * Обработка JSON-ответов с погодными данными
 * Реактивное обновление UI через StateFlow
