@@ -37,6 +37,8 @@
 ## Скриншоты
 
 
+| Main Night | Main Day | Search City | Weather Details |
+|---|---|---|---|
 | ![MainNight Screen](app/screenshots/mainDay.png) | ![MainDay Screen](app/screenshots/mainNight.png) | ![Search City](app/screenshots/search.png) | ![Weather Details](app/screenshots/daily.png) |
 
 
